@@ -16,7 +16,9 @@ const TodoList = ({ value }) => {
     setLanguages(languages.filter((item) => item !== language));
   };
   useEffect(() => {
-    setLanguages([...languages, value]);
+    if (value) {
+      setLanguages([...languages, value]);
+    }
   }, [value]);
   const handleDragEnd = (event) => {
     const { active, over } = event;
