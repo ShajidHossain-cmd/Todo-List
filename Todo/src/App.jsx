@@ -1,5 +1,6 @@
 import TodoModal from "./TodoModal.jsx";
 import TodoList from "./TodoList.jsx";
+import Add from "./Add.jsx";
 import { useState } from "react";
 function App() {
   const [todoModalValue, setTodoModalValue] = useState("");
@@ -9,7 +10,8 @@ function App() {
 
   return (
     <div>
-      <TodoModal updateValue={updateValue} />
+      {/* <TodoModal updateValue={updateValue} />         modal version           */}
+      <Add updateValue={updateValue} />
       <TodoList value={todoModalValue} />
     </div>
   );

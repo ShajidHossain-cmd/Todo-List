@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
@@ -11,6 +12,9 @@ import SortableItems from "./SortableItems";
 
 const TodoList = ({ value }) => {
   const [languages, setLanguages] = useState(["Java", "JavaScript", "Python"]);
+  const handleDelete = (language) => {
+    setLanguages(languages.filter((item) => item !== language));
+  };
   useEffect(() => {
     setLanguages([...languages, value]);
   }, [value]);
@@ -34,7 +38,17 @@ const TodoList = ({ value }) => {
           strategy={verticalListSortingStrategy}
         >
           {languages.map((language) => (
-            <SortableItems id={language} key={language} />
+            <>
+              <SortableItems id={language} key={language} />
+              <span>
+                <Button
+                  variant="primary"
+                  onClick={() => handleDelete(language)}
+                >
+                  Delete
+                </Button>
+              </span>
+            </>
           ))}
         </SortableContext>
       </Container>

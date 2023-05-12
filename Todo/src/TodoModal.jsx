@@ -11,6 +11,7 @@ const TodoModal = ({ updateValue }) => {
 
   const handleAdd = () => {
     updateValue(inputValue);
+
     handleClose();
   };
 
